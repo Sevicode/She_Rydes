@@ -16,7 +16,7 @@ function App() {
   return (
     <Router>
       <Header />
-      <main className = "py-3">
+      {/* <main className = "py-3"> */}
       <Container>
         <Route path = "/login" component={LoginScreen} />
         <Route path = "/register" component={RegisterScreen} />
@@ -25,7 +25,7 @@ function App() {
         <Route path = "/cart/:id?" component={CartScreen} />
         <Route path = "/" component={HomeScreen} exact />
       </Container>        
-      </main>
+      {/* </main> */}
       <Footer />
     </Router>
   );
