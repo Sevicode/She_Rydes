@@ -1,13 +1,20 @@
 import React, { Component } from 'react'
+import { useDispatch, useSelector } from "react-redux"
 import { LinkContainer } from "react-router-bootstrap"
-import { Navbar, Nav, Container, Row, Col, Image, NavDropdown } from "react-bootstrap"
+import {Navbar, Nav, Container, Row, Col, Image, NavDropdown } from "react-bootstrap"
+import { logout } from "../actions/userActions"
 
+const Header = () => {
+  const dispatch = useDispatch()
 
-export default class Header extends Component {
-  render() {
-    return (
-     
-     
+  const userLogin = useSelector((state) => state.userLogin)
+  const {userInfo } = userLogin
+
+  const logoutHandler = () => {
+    dispatch(logout())
+  }
+
+   return (
       <header>
        <Container style={
          {
@@ -56,15 +63,35 @@ export default class Header extends Component {
               <Nav.Link>
                 Contact us</Nav.Link>
               </LinkContainer> */}
-
+              
+              </Nav>
               
 
-              </Nav>
+              <Nav>
+              <LinkContainer to ="/cart">
+            <Nav.Link><i className="fas fa-shopping-cart"></i>
+              Cart
+              </Nav.Link>
+            </LinkContainer>
 
+            {userInfo ? (
+              <NavDropdown title={userInfo.name} id="username">
+                <LinkContainer to="/profile">
+                  <NavDropdown.Item>Profile</NavDropdown.Item>
+                </LinkContainer>
+                <NavDropdown.Item onClick={logoutHandler}>
+                  Logout
+                </NavDropdown.Item>
+              </NavDropdown>
+            ) : <LinkContainer to ="/login">
+              <Nav.Link><i className="fas fa-user"></i>
+              Login
+              </Nav.Link>
+            </LinkContainer> }
               
            
 
-              <Nav className="justify-content-end ml-auto">
+              {/* <Nav className="justify-content-end ml-auto">
               <LinkContainer to ="/login">
                 <Nav.Link><i className="fas fa-user"></i>
                 Sign in/Register</Nav.Link>
@@ -73,7 +100,7 @@ export default class Header extends Component {
               <LinkContainer to ="/cart">
               <Nav.Link><i className="fas fa-shopping-cart"></i>
                 Cart</Nav.Link>
-              </LinkContainer>
+              </LinkContainer> */}
               
             </Nav>
           
@@ -83,8 +110,10 @@ export default class Header extends Component {
           </Container>
         </Navbar>
       </header>
-    )
-  }
+    
+  )
 }
 
-// using class component here not arrow func w variable
+export default Header
+
+
