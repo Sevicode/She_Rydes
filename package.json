@@ -1,0 +1,61 @@
+{
+  "name": "she_rydes",
+  "version": "1.0.0",
+  "description": "Fullstack MERN eCommerce site for motorcycle apparel brand She Rydes",
+  "type": "module",
+  "main": "server.js",
+  "engines": {
+    "node": "14.x",
+    "npm": "6.14.8"
+  },
+  "scripts": {
+    "test": "mocha",
+    "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import": "node backend/seeder",
+    "data:destroy": "node backend/seeder -d",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alikillen/She_Rydes.git"
+  },
+  "keywords": [
+    "MERN",
+    "mongoDB",
+    "expressJS",
+    "React",
+    "NodeJS",
+    "eCommerce",
+    "motorcycle"
+  ],
+  "author": "Alison Killen and Sevda Amini",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alikillen/She_Rydes/issues"
+  },
+  "homepage": "https://github.com/alikillen/She_Rydes#readme",
+  "dependencies": {
+    "animate.css": "^4.1.1",
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "jest": "^26.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.8",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "react-aws-s3": "^1.3.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "concurrently": "^5.3.0",
+    "mocha": "^8.2.1",
+    "nodemon": "^2.0.6"
+  }
+}
